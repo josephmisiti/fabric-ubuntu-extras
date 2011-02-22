@@ -16,7 +16,7 @@ def install(pkg, silent=False):
 		# Update result, as generally you want to know 
 		# if something did actually install
 		result = sudo('apt-get install -y %s' % pkg, statusOnly=False)
-		if result.error:
+		if result.failed:
 			print result.stderr
 			return False
 		else:
