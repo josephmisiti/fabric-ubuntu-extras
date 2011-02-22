@@ -25,27 +25,27 @@ def print_status(job):
 def reload():
 	return sudo('initctl reload-configuration')
 
-def add_job(name, filename):
+def add(name, filename):
 	return sudo_put(filename, '/etc/init/%s.conf' % name, 0644)
 
-def remove_job(name):
+def remove(name):
 	return sudo('rm -f /etc/init/%s.conf' % name)
 
-def is_job(name):
+def exists(name):
 	return files.exists('/etc/init/%s.conf' % name)
 
 def add_jobs(jobs):
 	for job in jobs:
-		add_job(job['name'], job['file'])
+		add(job['name'], job['file'])
 
 def remove_jobs(jobs):
 	for job in jobs:
-		remove_job(job['name'])
+		remove(job['name'])
 
 def start_jobs(jobs):
 	for job in jobs:
-		start_job(job['name'])
+		start(job['name'])
 
 def stop_jobs(jobs):
 	for job in jobs:
-		stop_job(job['name'])
+		stop(job['name'])
