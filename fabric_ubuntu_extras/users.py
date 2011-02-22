@@ -8,9 +8,9 @@ def add(username, uid=False, verbose=False):
 	
 	cmd += username
 	
-	result = sudo(cmd)
+	result = sudo(cmd, verbose=True)
 	if not result.succeeded:
-		print result
+		print result.stderr
 	return result
 
 def remove(username, verbose=False):
