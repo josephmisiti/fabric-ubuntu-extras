@@ -1,6 +1,6 @@
 from fabric.utils import abort
 from fabric.contrib.console import confirm
-from fabric.api import sudo
+from utils import sudo
 
 def _msg(msg, silent):
 	if not silent:
