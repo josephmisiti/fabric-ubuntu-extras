@@ -8,7 +8,7 @@ def add(username, uid=False, verbose=False):
 	
 	cmd += username
 	
-	result = sudo(cmd).succeeded
+	result = sudo(cmd)
 	if not result.succeeded:
 		print result
 	return result
