@@ -8,7 +8,10 @@ def add(username, uid=False, verbose=False):
 	
 	cmd += username
 	
-	return sudo(cmd).succeeded
+	result = sudo(cmd).succeeded
+	if not result.succeeded:
+		print result
+	return result
 
 def remove(username, verbose=False):
 	cmd = 'userdel --system %s' % username
