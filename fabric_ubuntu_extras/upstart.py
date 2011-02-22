@@ -1,5 +1,6 @@
 from os import path
-from utils import *
+from fabric.contrib import files
+from utils import sudo, sudo_put
 
 def start(job):
 	return sudo('start %s' % job).succeeded
@@ -10,7 +11,7 @@ def stop(job):
 def status(job, status='start/running'):
 	result = sudo('status %s' % job)
 	
-	if not result.failed:
+	if result.succeeded:
 		return result.find(status) > -1
 	else:
 		return False
@@ -30,4 +31,7 @@ def add_job(name, filename):
 	return sudo_put(filename, '/etc/init/%s.conf' % name, 0644)
 
 def remove_job(name):
-	return sudo('rm -f /etc/init/%s' % (name, name))
+	return sudo('rm -f /etc/init/%s.conf' % name)
+
+def is_job(name):
+	return files.exists('/etc/init/%s.conf' % name)
