@@ -17,8 +17,6 @@ def status(job, status='start/running'):
 		return False
 
 def print_status(job):
-	print ""
-	
 	if status(job):
 		print "%s is currently running" % job
 	else:
@@ -35,3 +33,19 @@ def remove_job(name):
 
 def is_job(name):
 	return files.exists('/etc/init/%s.conf' % name)
+
+def add_jobs(jobs):
+	for job in jobs:
+		add_jobs(job['name'], job['file'])
+
+def remove_jobs(jobs):
+	for job in jobs:
+		remove_jobs(job['name'])
+
+def start_jobs(jobs):
+	for job in jobs:
+		start_jobs(job['name'])
+
+def stop_jobs(jobs):
+	for job in jobs:
+		stop_jobs(job['name'])
