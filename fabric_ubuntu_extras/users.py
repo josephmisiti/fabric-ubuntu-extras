@@ -1,11 +1,13 @@
 from fabric.utils import abort
 from utils import sudo
 
-def add(username, uid=False, verbose=False):
+def add(username, uid=False, gid=False, verbose=False):
 	cmd = 'useradd --no-create-home --system '
 	if uid:
 		cmd += '--uid %s ' % uid
+	if gid:
 		cmd += '--gid %s ' % uid
+	
 	cmd += username
 	
 	result = sudo(cmd)

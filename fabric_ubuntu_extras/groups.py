@@ -1,7 +1,11 @@
 from utils import sudo
 
-def add(grpname):
-	result = sudo('groupadd --system %s' % grpname).succeeded
+def add(grpname, gid=False):
+	cmd = 'groupadd --system %s' % grpname
+	if gid:
+		cmd = 'groupadd --system --gid %i %s' % (gid, grpname)
+	
+	result = sudo(cmd)
 	if not result.failed:
 		return result.stderr.endswith('already exists'):
 	else:
