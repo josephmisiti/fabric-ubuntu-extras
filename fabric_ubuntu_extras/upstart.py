@@ -1,10 +1,11 @@
+from os import path
 from utils import sudo
 
 def start(job):
-	return sudo('start %s' % job, statusOnly=True)
+	return sudo('start %s' % job).succeeded
 
 def stop(job):
-	return sudo('stop %s' % job, statusOnly=True)
+	return sudo('stop %s' % job).succeeded
 
 def status(job, status='start/running'):
 	result = sudo('status %s' % job)
@@ -20,8 +21,13 @@ def print_status(job):
 	if status(job):
 		print "%s is currently running" % job
 	else:
-		print "%s is currently not running" %job
+		print "%s is currently not running" % job
 
 def reload():
 	return sudo('initctl reload-configuration')
 
+def add_job(name, filename):
+	return sudo_put(filename, '/etc/init/%s.conf' % name, 0644)
+
+def remove_job(name):
+	return sudo('rm -f /etc/init/%s' % (name, name))
