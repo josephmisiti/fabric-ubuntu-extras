@@ -1,5 +1,5 @@
 from os import path
-from utils import sudo
+from utils import *
 
 def start(job):
 	return sudo('start %s' % job).succeeded
