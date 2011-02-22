@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 sdict = {
-    'name' : 'fabric-ubuntu-extras',
+    'name' : 'fabric_ubuntu_extras',
     'version' : '0.0.1',
     'description' : 'A few extras for fabric on Ubuntu systems',
     'long_description' : 'A few extras for fabric on Ubuntu systems',
