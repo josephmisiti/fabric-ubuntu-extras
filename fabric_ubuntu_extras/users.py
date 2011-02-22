@@ -6,8 +6,8 @@ def add(username, uid=False, verbose=False):
 	if uid:
 		cmd += '--uid %s' % uid
 	
-	return sudo(cmd, statusOnly=True)
+	return sudo(cmd).succeeded
 
 def remove(username, verbose=False):
 	cmd = 'userdel --system %s' % username
-	return sudo(cmd, statusOnly=True)
+	return sudo(cmd).succeeded
