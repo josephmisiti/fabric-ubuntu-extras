@@ -1,5 +1,6 @@
 from os import path
 from fabric.api import sudo as _sudo
+from fabric.api import put
 from fabric.context_managers import *
 
 def sudo(cmd, verbose=False):
