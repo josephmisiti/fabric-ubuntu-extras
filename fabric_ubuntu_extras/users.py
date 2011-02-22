@@ -5,6 +5,7 @@ def add(username, uid=False, verbose=False):
 	cmd = 'useradd --no-create-home --system '
 	if uid:
 		cmd += '--uid %s ' % uid
+		cmd += '--gid %s ' % uid
 	cmd += username
 	
 	result = sudo(cmd)
