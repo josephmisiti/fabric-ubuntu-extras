@@ -46,5 +46,4 @@ def installed(pkg):
 	if result.failed:
 		return result
 	else:
-		_msg(result.splitlines()[1], False)
-		return 'State: Installed' == result.splitlines()[1]
+		return 'State: installed' == result.splitlines()[1]
