@@ -7,7 +7,7 @@ def add(grpname, gid=False):
 	
 	result = sudo(cmd)
 	if not result.failed:
-		return result.stderr.endswith('already exists'):
+		return result.stderr.endswith('already exists')
 	else:
 		return False
 

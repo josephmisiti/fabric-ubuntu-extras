@@ -12,7 +12,7 @@ def add(username, uid=False, gid=False, verbose=False):
 	
 	result = sudo(cmd)
 	if not result.failed:
-		return result.stderr.endswith('already exists'):
+		return result.stderr.endswith('already exists')
 	else:
 		return False
 	
