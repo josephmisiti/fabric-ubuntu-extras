@@ -10,7 +10,7 @@ def add(username, uid=False, verbose=False):
 	result = sudo(cmd)
 	if result.succeeded:
 		return True
-	elif result.stderr.find('already exists') > -1
+	elif result.stderr.find('already exists') > -1:
 		return True
 	else
 		abort(result.stderr)
