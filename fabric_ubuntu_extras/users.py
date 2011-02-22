@@ -12,7 +12,7 @@ def add(username, uid=False, verbose=False):
 		return True
 	elif result.stderr.find('already exists') > -1:
 		return True
-	else
+	else:
 		abort(result.stderr)
 
 def remove(username, verbose=False):
