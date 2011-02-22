@@ -8,6 +8,8 @@ def install(pkg):
 		return True
 
 def uninstall(pkg, warn=True):
+	print installed(pkg)
+	
 	if installed(pkg):
 		cmd = 'apt-get remove -y %s' % pkg
 	
@@ -21,8 +23,10 @@ def uninstall(pkg, warn=True):
 
 def installed(pkg):
 	result = sudo('aptitude show %s' % pkg)
+	print result
 	if not result.failed:
 		lines = result.splitlines()
+		print lines
 		return "State: installed" in lines
 	else:
 		return False
