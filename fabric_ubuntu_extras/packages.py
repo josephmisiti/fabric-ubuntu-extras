@@ -1,3 +1,4 @@
+from fabric.utils import abort
 from fabric.contrib.console import confirm
 from utils import sudo
 
@@ -17,13 +18,11 @@ def install(pkg, silent=False):
 		# if something did actually install
 		result = sudo('apt-get install -y %s' % pkg, statusOnly=False)
 		if result.failed:
-			print result.stderr
-			return False
+			abort(result.stderr)
 		else:
 			return result
 	else:
-		_msg('Error', False)
-		_msg(result.stderr)
+		abort(result.stderr)
 
 def uninstall(pkg, warn=True, silent=False):
 	status = installed(pkg)
@@ -40,8 +39,7 @@ def uninstall(pkg, warn=True, silent=False):
 	elif status == False:
 		_msg('Not Already Installed %s: Skipped' % pkg, silent)
 	else:
-		_msg('Error', False)
-		_msg(result.stderr)
+		abort(result.stderr)
 
 def installed(pkg):
 	result = sudo('aptitude show %s' % pkg)
