@@ -4,6 +4,8 @@ from utils import sudo
 def install(pkg):
 	if not installed(pkg):
 		return sudo('apt-get install -y %s' % pkg, statusOnly=True)
+	else:
+		return True
 
 def uninstall(pkg, warn=True):
 	if installed(pkg):
@@ -14,6 +16,8 @@ def uninstall(pkg, warn=True):
 				return sudo(cmd, statusOnly=True)
 		else:
 			return sudo(cmd, statusOnly=True)
+	else:
+		return True
 
 def installed(pkg):
 	result = sudo('aptitude show %s' % pkg)
