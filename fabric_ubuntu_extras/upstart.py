@@ -36,16 +36,16 @@ def is_job(name):
 
 def add_jobs(jobs):
 	for job in jobs:
-		add_jobs(job['name'], job['file'])
+		add_job(job['name'], job['file'])
 
 def remove_jobs(jobs):
 	for job in jobs:
-		remove_jobs(job['name'])
+		remove_job(job['name'])
 
 def start_jobs(jobs):
 	for job in jobs:
-		start_jobs(job['name'])
+		start_job(job['name'])
 
 def stop_jobs(jobs):
 	for job in jobs:
-		stop_jobs(job['name'])
+		stop_job(job['name'])
