@@ -11,12 +11,11 @@ def add(username, uid=False, gid=False, verbose=False):
 	cmd += username
 	
 	result = sudo(cmd)
-	if result.succeeded:
-		return True
-	elif result.stderr.find('already exists') > -1:
-		return True
+	if not result.failed:
+		return result.stderr.endswith('already exists'):
 	else:
-		abort(result.stderr)
+		return False
+	
 
 def remove(username, verbose=False):
 	cmd = 'userdel --system %s' % username
