@@ -25,8 +25,6 @@ def installed(pkg):
 	result = sudo('aptitude show %s' % pkg)
 	print result
 	if not result.failed:
-		lines = result.splitlines()
-		print lines
-		return "State: installed" in lines
+		return 'State: Installed' == result.splitlines()[0]
 	else:
 		return False
