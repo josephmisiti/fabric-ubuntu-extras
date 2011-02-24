@@ -15,4 +15,4 @@ def sudo(cmd, verbose=False):
 def sudo_put(local_path, remote_path, mode=None):
 	name = path.basename(remote_path)
 	put(local_path, '/tmp/%s' % name, mode)
-	sudo('mv /tmp/%s %s' % (name, remote_path))
+	_sudo('mv /tmp/%s %s' % (name, remote_path))
